@@ -1,0 +1,38 @@
+<div class="container-fluid">
+<h1>Listing designers</h1>
+
+
+<% @designers.each do |designer| %>
+<div class="span round-corners">
+  <div><%= link_to image_tag(designer.image_url(:thumb)),products_path(:designer_id => designer) %></div>
+<div><%= designer.name %></div>
+<%@pro=Product.find_all_by_designer_id(designer)%>
+  
+
+    <%= link_to 'Show', designer %>
+    <%= link_to 'Edit', edit_designer_path(designer) %>
+    <%= link_to 'Destroy', designer, method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
+
+  <%#unless @pro.nil?%>
+  <%#*<div class="span12">%>
+  <%#@pro.each do |p|%>
+    <%#*<div class="span4">%>
+  <%#=image_tag p.image_url(:thumb)%>
+    <%#*</div>%>
+  <%#end%>
+    <%#*</div>%>
+  <%#end%>
+<% end %>
+
+<div class="span12">
+  <br /><br /><br />
+<%= link_to 'New Designer', new_designer_path %></div>
+</div>
+<%#*<style>%>
+  <%#*.round-corners{%>
+  <%#*border-radius: 5px;%>
+  <%#*border: 1px solid #555555;%>
+  <%#*padding: 5px;%>
+<%#*}%>
+<%#*</style>%>
